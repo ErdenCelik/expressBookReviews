@@ -47,7 +47,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
   if (!isbn || !review) {
     return res.status(401).json({ message: "Isbn and Review are required" });
   }
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, "your-secret-key", (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: "Invalid or expired token" });
     }
@@ -80,7 +80,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
   if (!isbn) {
     return res.status(401).json({ message: "Isbn are required" });
   }
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, "your-secret-key", (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: "Invalid or expired token" });
     }
